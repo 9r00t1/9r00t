@@ -1,0 +1,93 @@
+CREATE A PYTHON PROGRAM TO AUTOMATE LOGIN TO A WEBSITE USING SELENIUM
+
+AIM
+
+To create a python program to automate login to a website using Selenium.
+
+ALGORITHM
+
+Step 1: Start the program
+
+Step 2: Create an HTML webpage (index.html) containing a login form with username,
+
+password, and login button.
+
+Step 3: Import required modules (webdriver, By from selenium, and time).
+
+Step 4: Launch the Chrome browser using WebDriver
+
+= webdriver.Chrome()
+
+Step 5: Open the local webpage URL using driver.get().
+
+driver.get("http://localhost:8000")
+
+Step 6: Find username and password input elements by ID and enter credentials using
+
+send keys()
+
+driver.find_element(By.ID, "username").send_keys("student123")
+
+driver.find_element(By.ID, "password").send_keys("pass123")
+
+Step 7: Find the login button by ID and trigger submission using elick().
+
+driver.find_element(By. ID, "login-button").click()
+
+Step 8: Wait to view the login result, quit the browser session, and stop the program.
+
+PROGRAM
+
+index.html:
+
+<!DOCTYPE html>
+
+<title>Student Login</title>
+
+<style>
+
+body { display: grid; place-content: center; height: 100vh;, font-family: system-ui; }
+
+form { display: grid; gap: 8px; width: 240px; }
+
+#successMessage { color: green; text-align: center; }
+
+</style>
+
+<form onsubmit="event.preventDefault(); successMessage.hidden = false"> <h3 style="text-align:center, margin:0">Student Portal</h3> <input id="username" placeholder="Username" required> <input type="password" id="password" placeholder="Password" required>
+
+<button id="login-button">Login</button>
+
+<div id="successMessage" hidden>Login Successful!</div>
+
+</form>
+
+selenium_login.py:
+
+from selenium import webdriver selenium.webdriver.common.by import By import time
+
+# 1. Open Chrome Browser
+
+driver = webdriver.Chrome()
+
+# 2. Open Localhost Website
+
+driver.get("http://localhost:8000")
+
+time.sleep(2)
+
+#3. Find input fields and type credentials
+
+driver.find_element(By.ID, "username").send_keys("student123")
+
+driver.find_element(By.ID, "password").send_keys("pass123")
+
+#4. Click Login Button
+
+driver.find_element(By.ID, "login-button").click()
+
+#5. Wait to view result and close browser
+
+time.sleep(5)
+
+driver.quit()
