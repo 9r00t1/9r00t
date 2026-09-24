@@ -1,0 +1,45 @@
+DEVELOP A PYTHON SCRIPT USING NMAP TO IDENTIFY ACTIVE HOSTS IN A NETWORK
+
+AIM:
+
+To develop a python script using Nmap to identify active hosts in a network.
+
+ALGORITHM:
+
+STEP 1: Start the program & Download and install Nmap & Npcap.
+
+STEP 2: Import the required modules, os and nmap.
+
+STEP 3: Add the Npcap DLL directory (C:\Windows\System32\Npcap) to the system DLL search path.
+
+STEP 4: Create an Nmap PortScanner object and specify the path to the Nmap executable.
+
+STEP 5: Read the target network address (e.g., 192.168.1.0/24) from the user.
+
+STEP 6: Perform a host discovery scan on the specified network using the Nmap -sn option.
+
+STEP 7: Retrieve the list of hosts detected by the scanner.
+
+STEP 8: Iterate through each detected host.
+
+STEP 9: Retrieve the current state of each host, such as up or down.
+
+STEP 10: Display the IP address and corresponding host state on the screen.
+
+STEP 11: Stop the program.
+
+CODING
+
+import os, nmap
+
+os.add_dll_directory(r"C:\Windows\System32\Npcap")
+
+scanner = nmap.PortScanner(nmap_search_path=(r"C:\Program Files (x86)\Nmap\nmap.exe",))
+
+target = input("Enter network address: ")
+
+scanner.scan(hosts=target, arguments="-sn")
+
+for host in scanner.all_hosts():
+
+print(host, "-", scanner[host].state())
